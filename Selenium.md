@@ -76,3 +76,11 @@ iframe 에 대해서 긁어올수 있나?
 ## Selenium vs BeautifulSoup
 
 - 페이지 이동 : 클릭 vs urlopen
+
+
+
+
+
+
+
+- 아니 시발 분명 html 코드안에 있는데 못불러오는것들이 존재 , 뭔데시발??????
