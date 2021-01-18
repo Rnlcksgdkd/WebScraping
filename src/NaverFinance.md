@@ -138,7 +138,7 @@ df
 
 
 
-1. ![Screenshot_12](C:\Users\Ando\Documents\Screenshot_12.png)
+![Screenshot_12](Screenshot_12.png)
 
 
 
@@ -148,7 +148,7 @@ plt.plot(df["price (종가)"].values)
 df["price (종가)"]
 ```
 
-![Screenshot_11](C:\Users\Ando\Documents\Screenshot_11.png)
+![Screenshot_11](Screenshot_11.png)
 
 
 
