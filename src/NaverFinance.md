@@ -111,7 +111,9 @@ def get_exchange():
 
 
 
-## 주식 가격 스크래핑 해오기
+# 2. 주식 가격 스크래핑 해오기
+
+> 페이지 스크래핑
 
 ```python
 driver = webdriver.Chrome("./chromedriver.exe")
@@ -119,6 +121,7 @@ driver = webdriver.Chrome("./chromedriver.exe")
 prices = []
 date = []
 
+# 우선 10 페이지만 테스트
 for page in range(1,11):
     url = "https://finance.naver.com/item/sise_day.nhn?code=035720" + "&page=" + str(page)
     driver.get(url)
@@ -156,9 +159,7 @@ df["price (종가)"]
 plt.plot(df["price (종가)"].values[0:10])
 ```
 
-
-
-![Screenshot_13](C:\Users\Ando\Documents\Screenshot_13.png)
+![Screenshot_13](Screenshot_13.png)
 
 ```
     for i,p in enumerate(price_sel):
@@ -166,33 +167,9 @@ plt.plot(df["price (종가)"].values[0:10])
             prices.append(int(p.text.replace(",","")))
 ```
 
+![Screenshot_14](Screenshot_14.png)
 
-
-![Screenshot_14](C:\Users\Ando\Documents\Screenshot_14.png)
-
-
-
-```
-from matplotlib import font_manager , rc
-import platform
-
-# matplot 에서 한글 폰트 사용
-if platform.system() == "Windows":
-    path =  "c:/Windows/Fonts/malgun.ttf"
-    font_name = font_manager.FontProperties(fname=path).get_name()
-    rc('font' , family =  font_name)
-
-# 좀 더 그럴듯하게 그려보기
-plt.figure(figsize=(12,4))
-plt.plot(df.index , df["price (종가)"])
-plt.title("주식 가격 그래프")
-plt.xlabel("기준 년월")
-plt.ylabel("주식 가격 (종가 기준)")
-
-plt.show()
-```
-
-![Screenshot_16](C:\Users\Ando\Documents\Screenshot_16.png)
+![Screenshot_16](Screenshot_16.png)
 
 ```python
 xticks = []
@@ -205,9 +182,15 @@ xticks.append(df.index[-1])
 plt.xticks(xticks)
 ```
 
-![Screenshot_17](C:\Users\Ando\Documents\Screenshot_17.png)
+![Screenshot_17](Screenshot_17.png)
 
-```
+
+
+
+> 종목코드를 입력받아 크롬 드라이버 실행
+
+```python
+
 def get_stock_prices(code_number):
 
     driver = webdriver.Chrome("./chromedriver.exe")
@@ -221,10 +204,66 @@ def get_stock_prices(code_number):
     print("코드 종목 : {} / 코드 번호 : {}".format(stock_name , code_number))
 ```
 
+![Screenshot_21](C:\Users\Ando\Developer\WebCrawler\src\Screenshot_21.png)![Screenshot_22](C:\Users\Ando\Developer\WebCrawler\src\Screenshot_22.png)
 
+
+
+![Screenshot_24](C:\Users\Ando\Developer\WebCrawler\src\Screenshot_24.png)
+
+
+
+![Screenshot_23](C:\Users\Ando\Developer\WebCrawler\src\Screenshot_23.png)
+
+
+
+> 종목코드를 이용한 스크래핑 함수
 
 ```python
 ## 코드넘버 > 스크래핑 > df > xlsx 저장
+def get_stock_prices(code_number):
+
+    driver = webdriver.Chrome("./chromedriver.exe")
+    url = "https://finance.naver.com/item/main.nhn?code=" + code_number
+    driver.get(url)
+    if driver.find_elements_by_css_selector("div.error_content"):
+        print("잘못된 코드번호 입니다")
+        return
+    stock_name = driver.find_element_by_css_selector("div.wrap_company a").text
+    print("코드 종목 : {} / 코드 번호 : {}".format(stock_name , code_number))
+ 
+    # 스크래핑
+    prices = []
+    date = []
+    for page in range(1,11):
+        url = "https://finance.naver.com/item/sise_day.nhn?code=" + code_number + "&page=" + str(page)
+        driver.get(url)
+        date_sel = driver.find_elements_by_css_selector("span.tah.p10.gray03")
+        price_sel= driver.find_elements_by_css_selector("span.tah.p11")
+        for d in date_sel:
+            date.append(d.text)
+        for i,p in enumerate(price_sel):
+            if i% 6 == 0:
+                prices.append(int(p.text.replace(",","")))
+    prices.reverse()
+    df = pd.DataFrame({"price(종가)" : prices})
+    df.index = date
+    save_name = stock_name + " stock price.xlsx"
+    df.to_excel(save_name , engine="openpyxl")
+    print("Succesful Saving")            
+    return
+```
+
+![Screenshot_20](C:\Users\Ando\Developer\WebCrawler\src\Screenshot_20.png)
+
+```
+
+```
+
+
+
+> 첫페이지부터 끝페이지 까지 스크래핑 하기
+
+```python
 def get_stock_prices(code_number):
 
     driver = webdriver.Chrome("./chromedriver.exe")
@@ -240,11 +279,18 @@ def get_stock_prices(code_number):
     # 스크래핑
     prices = []
     date = []
-    for page in range(1,11):
+    pv_date = ""
+    while(1):
+        page += 1
         url = "https://finance.naver.com/item/sise_day.nhn?code=" + code_number + "&page=" + str(page)
         driver.get(url)
         date_sel = driver.find_elements_by_css_selector("span.tah.p10.gray03")
         price_sel= driver.find_elements_by_css_selector("span.tah.p11")
+
+        now_date = date_sel[0].text
+        if pv_date == now_date: break
+        else:
+            pv_date = now_date
         for d in date_sel:
             date.append(d.text)
 
@@ -258,11 +304,60 @@ def get_stock_prices(code_number):
     df.to_excel(save_name , engine="openpyxl")
     print("Succesful Saving")            
     return
+
+
+get_stock_prices("035720")
 ```
 
 
 
+> 엑셀파일을 열어서 plot 하기
+
+```python
+
+# 파일 경로를 입력받아 그래프 출력/저장
+def draw_graph(savefile = ""):
+    
+    # 로드
+    df = pd.read_xlsx(savefile)
+    
+    # matplot 에서 한글 폰트 사용
+    if platform.system() == "Windows":
+        path =  "c:/Windows/Fonts/malgun.ttf"
+        font_name = font_manager.FontProperties(fname=path).get_name()
+        rc('font' , family =  font_name)
+
+    xticks = []
+    for i in range(len(df)):
+        num_divide = 10
+        if i%10 == 0:
+            xticks.append(df.index[i])
+    plt.xticks(xticks)
+
+    # 좀 더 그럴듯하게 그려보기
+    plt.figure(figsize=(12,4))
+    plt.plot(df.index , df["price (종가)"])
+    plt.title("주식 가격 그래프")
+    plt.xlabel("기준 년월")
+    plt.ylabel("주식 가격 (종가 기준)")
+
+    plt.show()
+    plt.savefile(".png")
 ```
 
+
+
+> 기존 xlsx 파일을 열어서 업데이트 하기
+
+```python
+df = pd.read_xlsx(savefile)
+last_date = df.index[-1]
+
+url = "https://finance.naver.com/item/sise_day.nhn?code=" + code_number + "&page=" + str(page)
+driver.get(url)
+date_sel = driver.find_elements_by_css_selector("span.tah.p10.gray03")
+price_sel= driver.find_elements_by_css_selector("span.tah.p11")
+
+if date_sel[0].text == last_date: break
 ```
 
