@@ -156,7 +156,7 @@ for n,i in enumerate(items):
 ​	:   열씸히 쿠팡 사이트를 찾아가며 내가 필요한 정보가 담긴 태그들을 찾아 파싱을 하였다. 각 상품들이 `li.search-product` 태그안에 들어가 있으며  상품단위가격/배송방법(로켓 배송등)/별점은 없는 경우에 에러가 나므로 `try/except` 문을 넣어두었고 한번에 너무 많이 보려면 현기증이 나니 5개만 보도록 하자
 
 
-![Coupang_example (2)](https://github.com/Rnlcksgdkd/WebScraping.git/practice/img/Coupang_example (2).png)
+![Coupang_example (2)](https://github.com/Rnlcksgdkd/WebScraping.git/practice/img/Coupang_example(2).png)
 
 
 > ### 2) Pandas 데이터 프레임 형태로 저장
