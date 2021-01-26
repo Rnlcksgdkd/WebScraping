@@ -113,7 +113,7 @@ bs
 7. 적립금 
 ```
 
-![Coupang_example (3)](https://..../img/Coupang_example (3).png)
+![Coupang_example (3)](https://github.com/Rnlcksgdkd/WebScraping.git/practice/img/Coupang_example (3).png)
 
 > ###  1) 첫 페이지에 대해서 스크래핑 하기
 
