@@ -113,7 +113,7 @@ bs
 7. 적립금 
 ```
 
-![Coupang_example (3)](https://github.com/Rnlcksgdkd/WebScraping.git/practice/img/Coupang_example%20(3).png)
+![Coupang_example (3)](https://github.com/Rnlcksgdkd/WebScraping/blob/master/practice/img/Coupang_example%20(3).png)
 
 > ###  1) 첫 페이지에 대해서 스크래핑 하기
 
@@ -156,7 +156,7 @@ for n,i in enumerate(items):
 ​	:   열씸히 쿠팡 사이트를 찾아가며 내가 필요한 정보가 담긴 태그들을 찾아 파싱을 하였다. 각 상품들이 `li.search-product` 태그안에 들어가 있으며  상품단위가격/배송방법(로켓 배송등)/별점은 없는 경우에 에러가 나므로 `try/except` 문을 넣어두었고 한번에 너무 많이 보려면 현기증이 나니 5개만 보도록 하자
 
 
-![Coupang_example (2)](https://github.com/Rnlcksgdkd/WebScraping.git/practice/img/Coupang_example%20(2).png)
+![Coupang_example (2)](https://github.com/Rnlcksgdkd/WebScraping/blob/master/practice/img/Coupang_example%20(2).png)
 
 
 > ### 2) Pandas 데이터 프레임 형태로 저장
@@ -204,7 +204,7 @@ df.head(5)
 ​	:   위 코드에서는 print 로 테스트를 해보았고 이번에는 `items` 라는 변수에 각 데이터들을 담아두었고 `Pandas` 라이브러리의 데이터프레임형태로 저장해두고 칼럼명들을 지정해주었다.  값이 주어지지 않은 경우에는 None 값을 주었음 , 또 가격의 경우 str 형에다가 3자리마다 `,` 가 붙어있어서 replace 로 지워주고 int형으로 바꿔주었다.
 
 
-![Coupang_example (4)](https://github.com/Rnlcksgdkd/WebScraping.git/practice/img/Coupang_example (4).png)
+![Coupang_example (4)](https://github.com/Rnlcksgdkd/WebScraping/blob/master/practice/img/Coupang_example%20(4).png)
 =======
 
 
@@ -375,7 +375,7 @@ print(del_df)
 [del_df :  이름에 "우유"가 안 들어가 있는 상품들]
 
 
-![Coupang_example (8)](./img/Coupang_example (8).png)
+![Coupang_example (8)](https://github.com/Rnlcksgdkd/WebScraping/blob/master/practice/img/Coupang_example%20(8).png.png)
 
 
 
