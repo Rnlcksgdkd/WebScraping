@@ -275,11 +275,11 @@ df.to_excel("Coupang {} Searching Result.xlsx".format(keyword) , index=False)
 
 
 
-![Coupang_example (5)](./img/Coupang_example (5).png)
+![Coupang_example (5)](https://github.com/Rnlcksgdkd/WebScraping/blob/master/practice/img/Coupang_example%20(5).png)
 
  :  다음과 같이 xlsx 파일로 성공적으로 저장이 되었고 파일 내용들을 보다보니 밑의 사진과 같이 정체를 알 수 없는 우유들이 섞여있었다.
 
-![Coupang_example (6)](./img/Coupang_example (6).png)
+![Coupang_example (6)](https://github.com/Rnlcksgdkd/WebScraping/blob/master/practice/img/Coupang_example%20(6).png)
 
 이외에도 우유가 아닌 요구르트/우유맛 무언가들이 같이 검색이 된 걸 확인 할 수 있었고 우유가 아닌 것들을 제외해야 할 것 같다.
 
@@ -375,7 +375,7 @@ print(del_df)
 [del_df :  이름에 "우유"가 안 들어가 있는 상품들]
 
 
-![Coupang_example (8)](https://github.com/Rnlcksgdkd/WebScraping/blob/master/practice/img/Coupang_example%20(8).png.png)
+![Coupang_example (8)](https://github.com/Rnlcksgdkd/WebScraping/blob/master/practice/img/Coupang_example%20(8).png)
 
 
 
