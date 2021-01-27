@@ -120,3 +120,22 @@ df["col"][0:len(lst)] = lst
 
 
 Serial.mean()
+
+
+
+
+
+```python
+# 로우 드롭
+df.drop(대충 index , axis = 0)
+df = df.drop(df.head(10).index , axis = 0)
+
+# 칼럼 드롭
+df.drop(대충 칼럼명 튜플 , axis = 1)
+
+df.head(5).index
+df.loc["1996.06.29":] = df.loc["1996.06.29":]/50
+```
+
+
+
