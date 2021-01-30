@@ -135,6 +135,12 @@ df.drop(대충 칼럼명 튜플 , axis = 1)
 
 df.head(5).index
 df.loc["1996.06.29":] = df.loc["1996.06.29":]/50
+
+
+x_df = df.index[0 : -1]
+
+y_df = df.loc[x_df]["USDKRW"]
+
 ```
 
 
