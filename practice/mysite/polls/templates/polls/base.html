@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang = en>
+<head>
+    <link rel = "stylesheet" href = "style.css" />
+    <title>  {% block title %} Amazing {% endblock %} </title>
+</head>
+
+<body>
+    <br>
+    <div id = site_name style="border:1px solid; padding:10px;">
+        Airbnb Clone Site by Team3
+    </div>
+    <br>
+
+
+    <div id = site_name style="border:1px solid; padding:10px;">
+    <form action="{% url 'polls:searching' %}" method="post">
+        {% csrf_token %}
+        <input type="text"  autocomplete="off"  name="search_keyword" id="search_keyword" value="" />
+        
+        <input type="submit" value="searching" />  
+    </form>
+    </div> <br>
+
+
+    <div id = sidebar >
+        {% block sidebar  %}
+        대충 이뻐보이는 사진
+        {% endblock %}
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div id = content >
+        {% block content  %}
+        {% endblock %}
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <div id = "contributor" style="border:1px solid; padding:10px;">
+        Team 3 : 안도현, 송보미, 노한수, 최문선
+    </div>
+
+</body>
+
+</html>

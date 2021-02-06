@@ -1,0 +1,33 @@
+
+{% extends "polls/base.html" %}
+
+{% block sidebar %}
+<div id = "content_left" style = "border: 1px 
+    solid blue; padding: 10px;  float: left; width: 80%" >
+    사이드바 예시    
+</div>
+{% endblock%}
+
+{% block content %}
+<div id = "content_left" style = "border: 1px solid blue; padding: 10px;  float: left; width: 47%" >
+    
+    {% if host_info %} 
+    <div>
+        <b>{{host_info.host_name}} </b>
+        <br>
+        <br>
+        주소 : {{host_info.host_region}}
+        <br>
+        <br>
+        평점 : {{host_info.host_rating}} ({{host_info.host_num_rating}})
+        <br>
+        <br>
+        상세 링크 : <a href= {{host_info.host_href}} >{{host_info.host_href}} </a>
+        <br>
+        <br>
+    </div>
+ {% endif %}
+
+ {% endblock %}
+
+

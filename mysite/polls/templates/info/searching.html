@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+
+{% block sidebar %}
+<div id = "content_left" style = "border: 1px 
+    solid blue; padding: 10px;  float: left; width: 80%" >
+    사이드바 예시    
+</div>
+{% endblock%}
+
+{% block content %}
+<div id = "content_left" style = "border: 1px solid blue; padding: 10px;  float: left; width: 47%" >
+    
+    
+    {% for acmd in search_result %}
+    
+        <li> <a href= "{% url polls:Info_detail %}<int:id>" > {{acmd.room_name}} </a>  </li>
+        
+        <br>
+        {{acmd.location}}
+        <br>
+
+        <br>
+        {{acmd.link}}
+        <br>
+        <img src= {{acmd.image_link}} alt="Image">
+        <br>
+        input
+
+    {% endfor %}
+    
+    {% if search_result_host_info|length  == 0 %}
+        <p>No hosts are available.</p>
+    {% endif %}
+
+</div>
+
+
+<iframe src="map" title="내용" width="50%" height="500px"></iframe>
+
+{% endblock%}
+
+
+
+
