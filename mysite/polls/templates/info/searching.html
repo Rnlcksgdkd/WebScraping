@@ -11,10 +11,10 @@
 {% block content %}
 <div id = "content_left" style = "border: 1px solid blue; padding: 10px;  float: left; width: 47%" >
     
-    
+
     {% for acmd in search_result %}
     
-        <li> <a href= "{% url polls:Info_detail %}<int:id>" > {{acmd.room_name}} </a>  </li>
+        <li> <a href = "detail/{{acmd.id}}"> {{acmd.room_name}} </a>  </li>
         
         <br>
         {{acmd.location}}
@@ -25,7 +25,7 @@
         <br>
         <img src= {{acmd.image_link}} alt="Image">
         <br>
-        input
+        {{sample}}
 
     {% endfor %}
     
@@ -34,6 +34,16 @@
     {% endif %}
 
 </div>
+
+<form action="{% url 'polls:Info_map' %}" method="post">
+    {% csrf_token %}
+   
+    <button id="my-btn" onclick="alert('클릭이벤트 발생')";>버튼</button>
+    <script>
+        document.getElementById("my-btn")[0].click();
+    </script>
+</form>
+
 
 
 <iframe src="map" title="내용" width="50%" height="500px"></iframe>
