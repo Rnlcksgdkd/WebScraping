@@ -18,113 +18,14 @@ import folium
 import math
 from django.db.models import Q
 
+
+# 나중에 지울꺼 지금은 메인페이지 대신
 def base(request):
     
     return render(request, 'base.html')
 
 
-def map(request):
-
-
-    return render(request, 'info/map.html')
-
-
-# def search(request):
-
-#     all_host_list = Host_info.objects.all()
-#     context = {'all_host_list': all_host_list}
-#     return render(request, 'polls/search.html', context)
-
-
-# def index(request):
-    
-#     all_host_list = Host_info.objects.all()
-#     context = {'all_host_list': all_host_list}
-#     return render(request, 'polls/index.html', context)
-
-# def detail(request, host_info_id):
-#     host_info = get_object_or_404(Host_info, pk=host_info_id)
-#     return render(request, 'polls/detail.html', {'host_info': host_info})
-
-
-def detail(request , Accomodation_id  = 3):
-    acmd = get_object_or_404(Accomodation, pk=Accomodation_id)
-    return render(request, 'info/detail.html', {'acmd': acmd})
-
-def searching(request):
-    # template = loader.get_template('info/map.html')
-    # return render(request , template)
-
-    # if request.method == "POST":
-    #     search_keyword = request.POST['search_keyword']
-    #     search_result = Accomodation.objects.all().filter(room_name__icontains=search_keyword)
-        
-
-    #     # 페이징 작업
-    #     page = int(request.GET.get('page' , 1))
-    #     paginated_by = 10
-    #     total_count = len(search_result)
-    #     total_page = math.ceil(total_count/paginated_by)
-    #     page_range = range(1,total_page + 1)
-    #     start_idx = paginated_by*(page - 1)
-    #     end_idx = paginated_by*page
-
-    #     search_result = search_result[start_idx:end_idx]
-
-    #     # 검색데이터 -> map.html 구성 및 저장
-    #     NAME = []
-    #     X = []
-    #     Y = []
-    #     for acmd in search_result:
-    #         NAME.append(acmd.room_name)
-    #         X.append(acmd.latitude)
-    #         Y.append(acmd.longitude)        
-    #     save_Map(NAME , X, Y)
-
-
-    #     return render(request, 'info/searching.html', {'search_result': search_result , 'page_range' : page_range})
- 
-
-    if request.method == "GET":
-        print("get 방식" ,  request.GET)
-        search_keyword = request.GET['search_keyword']
-        page = int(request.GET.get('page' , 1))
-
-        search_result = Accomodation.objects.filter( Q(room_name__icontains=search_keyword) | Q(location__icontains=search_keyword))
-        #search_result = Accomodation.objects.all().filter(room_name__icontains=search_keyword)
-        
-
-        # 페이징 작업
-        
-        paginated_by = 10
-        total_count = len(search_result)
-        total_page = math.ceil(total_count/paginated_by)
-        page_range = range(1,total_page + 1)
-        start_idx = paginated_by*(page - 1)
-        end_idx = paginated_by*page
-
-        search_result = search_result[start_idx:end_idx]
-
-        # 검색데이터 -> map.html 구성 및 저장
-        NAME = []
-        X = []
-        Y = []
-        for acmd in search_result:
-            NAME.append(acmd.room_name)
-            X.append(acmd.latitude)
-            Y.append(acmd.longitude)        
-        save_Map(NAME , X, Y)
-
-
-        return render(request, 'info/searching.html', {'search_result': search_result , 'search_keyword' : search_keyword , 'page_range' : page_range})
-
-
-    return render(request , 'info/searching.html')
-
-
-
-
-# HTML 로 저장한다
+# 맵 정보를 HTML 로 저장
 def save_Map(NAME, Y, X):
     save_dir = "./"
 
@@ -139,33 +40,48 @@ def save_Map(NAME, Y, X):
     
 
 
+
+# 숙소 정보에 대한 클래스 뷰
 class Info_View(View):
+
+    # 숙소 검색 // 숙소이름/지역을 LIKE 검색해서 모두 찾는다
     def searching(self , request):
-        #search_keyword = request.POST['search_keyword']
-        #search_result_host_info = get_object_or_404(Host_info, host_name = search_keyword)
-        search_result = Accomodation.objects.all().filter(room_name__icontains="호텔")
-        #search_result_host_info = Host_info.objects.all().filter(host__icontains=search_keyword)
-        return render(request, 'info/searching.html', {'search_result': search_result})
 
-# def results(request, question_id):
-#     question = get_object_or_404(Question, pk=question_id)
-#     return render(request, 'polls/results.html', {'question': question})
+        # GET 방식으로 불러오기
+        if request.method == "GET":
+            search_keyword = request.GET['search_keyword']
+            page = int(request.GET.get('page' , 1))
+            search_result = Accomodation.objects.filter( Q(room_name__icontains=search_keyword) | Q(location__icontains=search_keyword))
 
-# def vote(request, question_id):
-#     question = get_object_or_404(Question, pk=question_id)
-#     try:
-#         selected_choice = question.choice_set.get(pk=request.POST['choice'])
-#     except (KeyError, Choice.DoesNotExist):
-#         # Redisplay the question voting form.
-#         return render(request, 'polls/detail.html', {
-#             'question': question,
-#             'error_message': "You didn't select a choice.",
-#         })
-#     else:
-#         selected_choice.votes += 1
-#         selected_choice.save()
-#         # Always return an HttpResponseRedirect after successfully dealing
-#         # with POST data. This prevents data from being posted twice if a
-#         # user hits the Back button.
-#         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+            # 페이징 작업 
+            paginated_by = 10
+            total_count = len(search_result)
+            total_page = math.ceil(total_count/paginated_by)
+            page_range = range(1,total_page + 1)
+            start_idx = paginated_by*(page - 1)
+            end_idx = paginated_by*page
+            search_result = search_result[start_idx:end_idx]
+
+            # 검색데이터 -> map.html 구성 및 저장
+            NAME = []
+            X = []
+            Y = []
+            for acmd in search_result:
+                NAME.append(acmd.room_name)
+                X.append(acmd.latitude)
+                Y.append(acmd.longitude)        
+            save_Map(NAME , X, Y)
+
+            return render(request, 'info/searching.html', {'search_result': search_result , 'search_keyword' : search_keyword , 'page_range' : page_range})
+
+        return render(request , 'info/searching.html')
+
+    # 숙소의 자세한 정보 
+    def detail(self, request , Accomodation_id  = 3):
+        acmd = get_object_or_404(Accomodation, pk=Accomodation_id)
+        return render(request, 'info/detail.html', {'acmd': acmd})
+
+    # 매핑 렌더링
+    def map(self, request):
+        return render(request, 'info/map.html')
 
