@@ -15,7 +15,7 @@
 
 
     <div id = site_name style="border:1px solid; padding:10px;">
-    <form action="{% url 'polls:Info_searching' %}" method="post">
+    <form action="{% url 'polls:Info_searching'%}?search_keyword={{search_keyword}}" method="get">
         {% csrf_token %}
         <input type="text"  autocomplete="off"  name="search_keyword" id="search_keyword" value="" />
         

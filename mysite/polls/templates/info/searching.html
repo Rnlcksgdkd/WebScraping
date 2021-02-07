@@ -29,24 +29,24 @@
 
     {% endfor %}
     
-    {% if search_result_host_info|length  == 0 %}
+    {% if search_result|length  == 0 %}
         <p>No hosts are available.</p>
     {% endif %}
 
 </div>
 
-<form action="{% url 'polls:Info_map' %}" method="post">
-    {% csrf_token %}
-   
-    <button id="my-btn" onclick="alert('클릭이벤트 발생')";>버튼</button>
-    <script>
-        document.getElementById("my-btn")[0].click();
-    </script>
-</form>
-
-
 
 <iframe src="map" title="내용" width="50%" height="500px"></iframe>
+
+<!-- Paging -->
+<nav aria-label= "Page Navigaton">
+    <ul class = "pagination">
+        {% for page in page_range %}
+        <li class = "page-item"><a class ="page-link" 
+            href = "{% url 'polls:Info_searching'%}?search_keyword={{search_keyword}}&&page={{page}}">{{page}}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
 
 {% endblock%}
 

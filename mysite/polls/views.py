@@ -15,6 +15,8 @@ from django.template import loader
 # polls/search.html : 데이터 검색 페이지
 import pandas as pd
 import folium
+import math
+from django.db.models import Q
 
 def base(request):
     
@@ -53,21 +55,69 @@ def searching(request):
     # template = loader.get_template('info/map.html')
     # return render(request , template)
 
-    if request.method == "POST":
-        search_keyword = request.POST['search_keyword']
-        search_result = Accomodation.objects.all().filter(room_name__icontains=search_keyword)
+    # if request.method == "POST":
+    #     search_keyword = request.POST['search_keyword']
+    #     search_result = Accomodation.objects.all().filter(room_name__icontains=search_keyword)
         
+
+    #     # 페이징 작업
+    #     page = int(request.GET.get('page' , 1))
+    #     paginated_by = 10
+    #     total_count = len(search_result)
+    #     total_page = math.ceil(total_count/paginated_by)
+    #     page_range = range(1,total_page + 1)
+    #     start_idx = paginated_by*(page - 1)
+    #     end_idx = paginated_by*page
+
+    #     search_result = search_result[start_idx:end_idx]
+
+    #     # 검색데이터 -> map.html 구성 및 저장
+    #     NAME = []
+    #     X = []
+    #     Y = []
+    #     for acmd in search_result:
+    #         NAME.append(acmd.room_name)
+    #         X.append(acmd.latitude)
+    #         Y.append(acmd.longitude)        
+    #     save_Map(NAME , X, Y)
+
+
+    #     return render(request, 'info/searching.html', {'search_result': search_result , 'page_range' : page_range})
+ 
+
+    if request.method == "GET":
+        print("get 방식" ,  request.GET)
+        search_keyword = request.GET['search_keyword']
+        page = int(request.GET.get('page' , 1))
+
+        search_result = Accomodation.objects.filter( Q(room_name__icontains=search_keyword) | Q(location__icontains=search_keyword))
+        #search_result = Accomodation.objects.all().filter(room_name__icontains=search_keyword)
+        
+
+        # 페이징 작업
+        
+        paginated_by = 10
+        total_count = len(search_result)
+        total_page = math.ceil(total_count/paginated_by)
+        page_range = range(1,total_page + 1)
+        start_idx = paginated_by*(page - 1)
+        end_idx = paginated_by*page
+
+        search_result = search_result[start_idx:end_idx]
+
+        # 검색데이터 -> map.html 구성 및 저장
         NAME = []
         X = []
         Y = []
         for acmd in search_result:
             NAME.append(acmd.room_name)
             X.append(acmd.latitude)
-            Y.append(acmd.longitude)
-        
+            Y.append(acmd.longitude)        
         save_Map(NAME , X, Y)
 
-        return render(request, 'info/searching.html', {'search_result': search_result})
+
+        return render(request, 'info/searching.html', {'search_result': search_result , 'search_keyword' : search_keyword , 'page_range' : page_range})
+
 
     return render(request , 'info/searching.html')
 
