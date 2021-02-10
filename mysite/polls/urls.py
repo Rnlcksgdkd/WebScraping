@@ -10,9 +10,8 @@ app_name = 'polls'
 urlpatterns = [
 
     # 메인 페이지 URL
-    path('', views.base, name='base'),    # /polls/
-
-
+    path('', views.base, name='base'),   
+    path('index', views.index , name = 'index'),
     ## 숙소 정보 URL
     path('info/searching/' , Info_View().searching , name = 'Info_searching'),
     path('info/searching/detail/<int:Accomodation_id>' , Info_View().detail , name = 'Info_detail'),

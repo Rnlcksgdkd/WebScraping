@@ -20,6 +20,11 @@ from django.db.models import Q
 
 
 # 나중에 지울꺼 지금은 메인페이지 대신
+def index(request):
+    
+    return render(request, 'index.html')
+
+# 나중에 지울꺼 지금은 메인페이지 대신
 def base(request):
     
     return render(request, 'base.html')
@@ -54,7 +59,7 @@ class Info_View(View):
             search_result = Accomodation.objects.filter( Q(room_name__icontains=search_keyword) | Q(location__icontains=search_keyword))
 
             # 페이징 작업 
-            paginated_by = 10
+            paginated_by = 9
             total_count = len(search_result)
             total_page = math.ceil(total_count/paginated_by)
             page_range = range(1,total_page + 1)
