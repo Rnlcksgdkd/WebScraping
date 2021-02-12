@@ -1,26 +1,337 @@
 
-{% extends "base.html" %}
+  {% load static %}
 
-{% block sidebar %}
-<div id = "content_left" style = "border: 1px 
-    solid blue; padding: 10px;  float: left; width: 80%" >
-    사이드바 예시    
-</div>
-{% endblock%}
-
-{% block content %}
-<div id = "content_left" style = "border: 1px solid blue; padding: 10px;  float: left; width: 47%" >
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/carousel.css' %}" rel="stylesheet"> 
+  <script src="{% static 'css/bootstrap.bundle.min.js' %}"></script>
     
-    {{acmd}}
 
-    <br>
+    <!-- Bootstrap core CSS -->
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
-    {{acmd.location}}
-    <br>
-    {{acmd.limk}}
-    <br>
-    <img src= {{acmd.image_link}} alt="Image">
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
 
- {% endblock %}
+        
+      }
 
+      div[class^="col"] { padding: 2px; border: 0px solid #dadada; background-color: #FAFAFA; }
+
+
+    h2 {font-size:15px;}
+    .star-rating {width:304px; }
+    .star-rating,.star-rating span {display:inline-block; height:55px; overflow:hidden; background:url( "{% static 'css/star.png' %}")no-repeat; }
+    .star-rating span{background-position:left bottom; line-height:0; vertical-align:top; }
+
+    .container {
+	display: flex;}
+
+    </style>
+
+    <!-- Custom styles for this template -->
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+    
+          <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+           
+            <a class="navbar-brand" href="{% url 'polls:base' %}" style="font-size: 200%; margin-left : 20px;  margin-right: 20px;"> <strong> Airbnb </strong></a> 
+            &nbsp  &nbsp
+            <a class="navbar-brand" href="#">홈</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            &nbsp  &nbsp
+            <a class="navbar-brand" href="#">게시판</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            &nbsp  &nbsp
+            <a class="navbar-brand" href="#" style = "top:100px;">
+          
+              <form class="d-flex"  style = "margin-top:25px;" action = "{% url 'polls:Info_searching'%}?search_keyword={{search_keyword}}" >
+                <input class="form-control me-2" name = "search_keyword" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </a>
+                
+          </nav>
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+
+<div class="row featurette" style = "width : 1200px; background-color:ghostwhite (248, 234, 234);
+margin-left : 20px;
+padding-top: 15px; padding-bottom: 20px; padding-left : 10px; padding-right: 10px;">
+
+
+
+<div class="row">
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="border: 10px;  width : 600px; height : 600px; margin-left:50px" >
+    <ol class="carousel-indicators">
+      <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+      <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+      <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
+      <li data-bs-target="#myCarousel" data-bs-slide-to="4"></li>
+    </ol>
+  
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src = {{acmd.image_link}} style = "height : 550px; width : 600px"  >
+      </div>
+  
+      <div class="carousel-item">
+        <img src = {{acmd.img_link_3}}  style = "height : 550px; width : 600px"  >
+        </div>
+  
+  
+      <div class="carousel-item">
+        <img src = {{acmd.img_link_4}}  style = "height : 550px; width : 600px"  >
+  
+      </div>
+  
+      <div class="carousel-item">
+        <img src = {{acmd.img_link_5}} style ="height : 550px; width : 600px"  >
+  
+      </div>
+      
+    </div>
+  
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"; style = "margin-left: 10px;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"style = "margin-right: 10px;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+  
+  <div class="col-5" 
+    style="float:left; margin-left: 5px; border : 1px solid; height: 550px;
+    padding-top : 30px; padding-bottom: 20px; padding-right : 20px;
+    "> 
+  
+      <div style = "font-size : 200%; font-weight: 700; margin-left: 25px;">
+        {{acmd.room_name}}
+      </div>
+
+      <div class="container" style = "margin-left: 0px; margin-bottom : 25px;">
+        
+        <div class="item" style = "background-color:#ffa500; width : 30px; border : 2px solid; 
+        border-radius: 10px; color:ivory; text-align:center;
+        font-weight: bold;">
+        9.5</div>
+        &nbsp
+        <div class="item" style = "color: #ffa500;"> 최고에요 </div>
+        &nbsp
+        <div class="item" style = "background-color:#8b00ff ; width : 60px; border : 2px solid; border-radius: 10px; color:ivory; text-align:center;
+        font-weight: bold;" >호텔</div>
+      </div>
+
+      <div style = "margin-left: 20px; margin-bottom: 30px; font-size : 110%;">
+        {{acmd.location}}
+      </div>
+      
+      <div style = "margin-left: 15px; font-size : 110%; background-color: #F2F2F2;
+      padding-top: 20px; padding-bottom: 20px; padding-right: 10px; padding-left : 10px;
+      ">
+        <div style = "font-weight: 700; margin-bottom: 15px; color :black"> 숙소 소개 </div>
+        {{acmd.owner_comment}}
+      </div>
+
+
+  </div>
+      </div>
+
+    </div>
+
+
+
+<div class="row featurette" style = "width : 1200px; background-color:ghostwhite (248, 234, 234);
+margin-left : 50px;
+padding-top: 0px; padding-bottom: 20px; padding-left : 10px; padding-right: 10px;">
+
+<hr class="featurette-divider">
+
+<div>
+
+  <div style = "text-align: center; font-weight: 900; font-size:200%; margin-bottom: 20px;">
+    최고예요
+    </div>
+
+<div class="wrap-star" style = "margin-left: 425px; margin-bottom: 20px;">
+  <div class='star-rating'>
+      <span style ="width:70%"></span>
+  </div>
+</div>
+
+<div style = "text-align: center; font-size : 200%; font-weight: 800; color:royalblue">
+  4.0 (271)
+ </div>
+
+<hr class="featurette-divider">
+</div>
+</div>
+
+
+  <div style = "align-content: center; width : 1200px; height : 30px; font-size : 150%; text-align: center; font-weight: 900; color: rosybrown;">
+    객실 안내 및 예약
+  </div>
+<br>
+
+<div class="row featurette" style = "width : 1200px; background-color:ghostwhite (248, 234, 234);
+  margin-top : 10px; margin-left : 50px;
+  padding-top: 20px; padding-bottom: 20px; padding-left : 10px; padding-right: 10px;
+  border: 1px solid gray ">
+
+<div class="col-md-6 order-md-1">
+  <img src = "{% static 'css/detail_room_2.jpg' %}" style = "width : 100%; height: 400px;" >
+</div>
+
+  <div class="col-md-6 order-md-2"  style = "font-size : 120%; margin-top : 5px; padding-left : 15px;
+    height : 400px; " >
+
+    <div style = "height : 350px;">
+    <h2 class="featurette-heading"
+      style = "font-size : 120%; margin-top : 5px; margin-left : 0px; text-align: center; font-weight:bold;" 
+    > [설 연휴! Flash Sale] 수피리어 트윈 (룸온리) <span class="text-muted"></span></h2>
+  
+    <p class="lead" style = "font-size: 100%; margin-left : 10px; margin-top: 25px;"> 
+        <li> 2인 기준 최대 3인</li>
+        <li> 인원 추가시 비용 발생, 현장에서 결제 바랍니다.</li>
+          <li>더블배드 1개</li>
+         <li>객실 + 욕실 / 10.00평</li>
+      <br>
+      <strong>
+        편의 시설 : <br>
+      </strong>
+      TV , 쇼파, 에어컨, 냉장고, 미니바, 욕실용품, 샤워가운, 슬리퍼, 헤어드라이기
+      <br>
+    </p>  
+  </div>
+
+  <div style = "text-align: center;">
+    <a href="#" class="btn btn-primary" style = "position: relative; bottom: 0px; height : 40px; width : 500px; 
+    text-align: center; font-size : 110%"> 
+      가격 : 22,000 원</a>
+      </div>
+  </div>
+</div>
+
+<br>
+
+  <div class="row featurette" style = "width : 1200px; background-color:ghostwhite (248, 234, 234);
+  margin-left : 50px;
+  padding-top: 20px; padding-bottom: 20px; padding-left : 10px; padding-right: 10px;
+  border: 1px solid gray ">
+
+<div class="col-md-6 order-md-1">
+  <img src = "{% static 'css/detail_room_1.jpg' %}" style = "width : 100%; height: 400px;" >
+</div>
+
+  <div class="col-md-6 order-md-2"  style = "font-size : 120%; margin-top : 5px; padding-left : 15px;
+    height : 400px; " >
+
+    <div style = "height : 350px;">
+    <h2 class="featurette-heading"
+      style = "font-size : 120%; margin-top : 5px; margin-left : 0px; text-align: center; font-weight:bold;" 
+    > [설 연휴! Flash Sale] 수피리어 트윈 (룸온리) <span class="text-muted"></span></h2>
+  
+    <p class="lead" style = "font-size: 100%; margin-left : 10px; margin-top: 25px;"> 
+        <li> 2인 기준 최대 3인</li>
+        <li> 인원 추가시 비용 발생, 현장에서 결제 바랍니다.</li>
+          <li>더블배드 1개</li>
+         <li>객실 + 욕실 / 1..00평</li>
+      <br>
+      <strong>
+        편의 시설 : <br>
+      </strong>
+      TV , 쇼파, 에어컨, 냉장고, 미니바, 욕실용품, 샤워가운, 슬리퍼, 헤어드라이기
+      <br>
+    </p>  
+  </div>
+
+  <div style = "text-align: center;">
+    <a href="#" class="btn btn-primary" style = "position: relative; bottom: 0px; height : 40px; width : 500px; 
+    text-align: center; font-size : 110%"> 
+      가격 : 22,000 원</a>
+      </div>
+  </div>
+</div>
+
+<br>
+
+
+  <div class="row featurette" style = "width : 1200px; background-color:ghostwhite (248, 234, 234);
+  margin-left : 50px;
+  padding-top: 20px; padding-bottom: 20px; padding-left : 10px; padding-right: 10px;
+  border: 1px solid gray ">
+<div class="col-md-6 order-md-1">
+  <img src = "{% static 'css/detail_room_3.jpg' %}" style = "width : 100%; height: 400px;" >
+</div>
+
+  <div class="col-md-6 order-md-2"  style = "font-size : 120%; margin-top : 5px; padding-left : 15px;
+    height : 400px; " >
+
+    <div style = "height : 350px;">
+    <h2 class="featurette-heading"
+      style = "font-size : 120%; margin-top : 5px; margin-left : 0px; text-align: center; font-weight:bold;" 
+    > [설 연휴! Flash Sale] 수피리어 트윈 (룸온리) <span class="text-muted"></span></h2>
+  
+    <p class="lead" style = "font-size: 100%; margin-left : 10px; margin-top: 25px;"> 
+        <li> 2인 기준 최대 3인</li>
+        <li> 인원 추가시 비용 발생, 현장에서 결제 바랍니다.</li>
+          <li>더블배드 1개</li>
+         <li>객실 + 욕실 / 1..00평</li>
+      <br>
+      <strong>
+        편의 시설 : <br>
+      </strong>
+      TV , 쇼파, 에어컨, 냉장고, 미니바, 욕실용품, 샤워가운, 슬리퍼, 헤어드라이기
+      <br>
+    </p>  
+  </div>
+
+  <div style = "text-align: center;">
+    <a href="#" class="btn btn-primary" style = "position: relative; bottom: 0px; height : 40px; width : 500px; 
+    text-align: center; font-size : 110%"> 
+      가격 : 22,000 원</a>
+      </div>
+  </div>
+</div>
+<br>
+
+
+
+
+
+
+  <!-- /END THE FEATURETTES -->
+
+</div><!-- /.container -->
+
+
+
+<iframe src="{% url 'polls:Info_map' %}" title="내용" 
+width="35.00%" height="500px" style="position: fixed;  top:180px;  right:50px; z-index: 2;"></iframe>
+
+
+
+
+<br>
+<br>
 

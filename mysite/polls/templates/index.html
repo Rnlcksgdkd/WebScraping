@@ -1,14 +1,53 @@
-    
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
 
-          <h3 class="mb-2">Accomodation Name</h3>
-          <div class="mb- text-muted">location</div>
-          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-                
+  {% load static %}
+
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/carousel.css' %}" rel="stylesheet"> 
+  <script src="{% static 'css/bootstrap.bundle.min.js' %}"></script>
+
+  <style>
+  .container {
+    display: flex;}
+  
+      </style>
+
+
+  <div class="col-4" 
+    style="float:left; margin-left: 5px; border : 1px solid; height : 500px;
+    padding-top : 30px; padding-bottom: 20px; padding-right : 20px;
+    "> 
+  
+      <div style = "font-size : 230%; font-weight: 700; margin-left: 15px;">
+        호텔 이름
       </div>
-    </div>
+
+      <div class="container" style = "margin-left: 0px; margin-bottom : 30px;">
+        
+        <div class="item" style = "background-color:#ffa500; width : 30px; border : 2px solid; 
+        border-radius: 10px; color:ivory; text-align:center;
+        font-weight: bold;">
+        9.5</div>
+        &nbsp
+        <div class="item" style = "color: #ffa500;"> 최고에요 </div>
+        &nbsp
+        &nbsp
+        <div class="item" style = "background-color:#8b00ff ; width : 60px; border : 2px solid; border-radius: 10px; color:ivory; text-align:center;
+        font-weight: bold;" >호텔</div>
+      </div>
+
+      <div style = "margin-left: 15px; margin-bottom: 30px; font-size : 130%;">
+        경기도 성남시 수정구 성남대로 1390번길 25-8
+      </div>
+      
+      <div style = "margin-left: 15px; font-size : 125%; background-color: #F2F2F2;
+      padding-top: 20px; padding-bottom: 20px; padding-right: 10px; padding-left : 10px;
+      ">
+        <div style = "font-weight: 700; margin-bottom: 15px;"> 숙소 소개 </div>
+        삼성역 코엑스, 컨벤션 센터, 코엑스몰, 카지노, 영화관, 면세점과 바로 연결되어있어 쇼핑과 문화를 한 번에 즐기실 수 있습니다
+        도심의 풍경을 즐기고 싶은 고객을 위해 한강과 서울의 야경을 한눈에 담을 수 있는 656개의 객실, 뷔페, 레스토랑이 준비되어 있습니다
+      </div>
+
+
   </div>
+
+    

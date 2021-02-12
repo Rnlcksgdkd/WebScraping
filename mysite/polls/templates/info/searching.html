@@ -27,16 +27,35 @@
 
            <p class="card-text" style="font-size: 90%">{{acmd.location}}</p>  
 
-           <details style="font-size: 80%">
-            <summary>삼성역 코엑스, 컨벤션 센터, 코엑스몰, 카지노, 영화관, 면세점과 바로 연결되어있어 쇼핑과 문화를 한 번에 즐기실 수 있습니다 </summary>
+           
+            {% if acmd.owner_comment|length == 0 %}
+            <details style="font-size: 80%; float:left">
+                <summary style = "float:left;"> 
+                    설명이 없습니다.
+                     </summary>
+    
+                </details>           
+            {% else %}
+            <details style="font-size: 80%; float:left">
+            <summary style = "float:left;"> 
+                {{acmd.owner_comment|slice:":60"}}
+                 </summary>
             
-              도심의 풍경을 즐기고 싶은 고객을 위해 한강과 서울의 야경을 한눈에 담을 수 있는 656개의 객실, 뷔페, 레스토랑이 준비되어 있습니다>
+                 {{acmd.owner_comment|slice:"60:"}}
             </details>
-
+            {% endif %}
+            
           <br>
-        
-          <a href= "detail/{{acmd.id}}" class="btn btn-primary" style = "margin-left: 5px;">Go Detail!</a> &nbsp
-          <a href="#" class="btn btn-primary" style = "margin-top: 0px;"> 최저가 : 52,000 원</a>
+        <br>
+          <a href= "detail/{{acmd.id}}" class="btn btn-primary" style = "margin-top:10px; margin-left: 5px;">Go Detail!</a> &nbsp
+          
+          {% if acmd.min_price != None  %}
+          <a href="#" class="btn btn-primary" style = "margin-top: 10px;"> 최저가 : {{acmd.min_price}} 원</a>
+          {% else %}
+          &nbsp  
+          <a href="#" class="btn btn-primary" style = "margin-top: 10px; background-color: red;"> 
+            매진 </a>
+          {% endif %}
           </div> </div> </div>
 
     {% if forloop.counter|divisibleby:3  %}
@@ -44,23 +63,31 @@
             
         </div>
     {% endif %}
-
     {% endfor %}
-    <iframe src="map" title="내용" width="49.55%" height="750px" style="position: fixed;  top:95px;  right:5px; z-index: 2;"></iframe>
-    </div>
+
+
+    <iframe src="map" title="내용" width="49.55%" height="750px" style="position: fixed;  top:100px;  right:5px; z-index: 2;"></iframe>
     
+</div>    
 </div>
 
 
-    
     {% if search_result|length  == 0 %}
-        <p>No hosts are available.</p>
+        <div class=container style = "font-size: 170%; float:left; margin-left:300px; color: black;">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            이용가능한 시설이 없습니다
+        </div>
     {% endif %}
 
 
-
 <!-- Paging -->
-<nav aria-label= "Page Navigaton">
+<div class=container style="align-content: center; margin-top:50px;">
+<nav aria-label= "Page Navigaton" style = "width:150%;">
     <ul class = "pagination">
         {% for page in page_range %}
         <li class = "page-item"><a class ="page-link" 
@@ -68,7 +95,7 @@
         {% endfor %}
     </ul>
 </nav>
-
+</div>
 
 
 
