@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_dbc8cb6611ba4f7e82c2deee053164fc {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_dbc8cb6611ba4f7e82c2deee053164fc" ></div>
+        
+</body>
+<script>    
+    
+            var map_dbc8cb6611ba4f7e82c2deee053164fc = L.map(
+                "map_dbc8cb6611ba4f7e82c2deee053164fc",
+                {
+                    center: [37.51277725882178, 127.05371450493142],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b379ea4f8aeb4fc5aa4c0674d330ee89 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_dbc8cb6611ba4f7e82c2deee053164fc);
+        
+    
+            var marker_4be42a51bcfc4a98bc542d756dec7b54 = L.marker(
+                [37.508926436627, 127.05756946860599],
+                {"color": "red", "radius": 10}
+            ).addTo(map_dbc8cb6611ba4f7e82c2deee053164fc);
+        
+    
+        var popup_280df839ae4b46b59655a5604da5ae35 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ed36b78655ca4834a4c145c469564360 = $(`<div id="html_ed36b78655ca4834a4c145c469564360" style="width: 100.0%; height: 100.0%;">호텔 유리앤</div>`)[0];
+            popup_280df839ae4b46b59655a5604da5ae35.setContent(html_ed36b78655ca4834a4c145c469564360);
+        
+
+        marker_4be42a51bcfc4a98bc542d756dec7b54.bindPopup(popup_280df839ae4b46b59655a5604da5ae35)
+        ;
+
+        
+    
+    
+            var marker_1eee57f5af854c49a1738c2901528b9b = L.marker(
+                [37.50241452150671, 127.038487898526],
+                {"color": "red", "radius": 10}
+            ).addTo(map_dbc8cb6611ba4f7e82c2deee053164fc);
+        
+    
+        var popup_cedc066179b6447aaa11261d4d6b35f8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f5e34d73cabf46049cced7cb00278ae5 = $(`<div id="html_f5e34d73cabf46049cced7cb00278ae5" style="width: 100.0%; height: 100.0%;">역삼 호텔 디 아티스트</div>`)[0];
+            popup_cedc066179b6447aaa11261d4d6b35f8.setContent(html_f5e34d73cabf46049cced7cb00278ae5);
+        
+
+        marker_1eee57f5af854c49a1738c2901528b9b.bindPopup(popup_cedc066179b6447aaa11261d4d6b35f8)
+        ;
+
+        
+    
+    
+            var marker_1b3140b373c545829403dd8c0ce05d8b = L.marker(
+                [37.515582728268, 127.06003592277901],
+                {"color": "red", "radius": 10}
+            ).addTo(map_dbc8cb6611ba4f7e82c2deee053164fc);
+        
+    
+        var popup_60774b5f10734b429cac9f43c2eb4869 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a80e3e8c386b43dd95bb473e1b6a7c76 = $(`<div id="html_a80e3e8c386b43dd95bb473e1b6a7c76" style="width: 100.0%; height: 100.0%;">호텔 인 나인 강남</div>`)[0];
+            popup_60774b5f10734b429cac9f43c2eb4869.setContent(html_a80e3e8c386b43dd95bb473e1b6a7c76);
+        
+
+        marker_1b3140b373c545829403dd8c0ce05d8b.bindPopup(popup_60774b5f10734b429cac9f43c2eb4869)
+        ;
+
+        
+    
+    
+            var marker_278194ab99f54297bf21ae8b46389d33 = L.marker(
+                [37.5130779481089, 127.05821511825899],
+                {"color": "red", "radius": 10}
+            ).addTo(map_dbc8cb6611ba4f7e82c2deee053164fc);
+        
+    
+        var popup_ee02d70b54bd4ad9922c8f49ae38d19f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_85b5ab083194490e97f5d9ac8dfc0cbd = $(`<div id="html_85b5ab083194490e97f5d9ac8dfc0cbd" style="width: 100.0%; height: 100.0%;">인터컨티넨탈 서울 코엑스</div>`)[0];
+            popup_ee02d70b54bd4ad9922c8f49ae38d19f.setContent(html_85b5ab083194490e97f5d9ac8dfc0cbd);
+        
+
+        marker_278194ab99f54297bf21ae8b46389d33.bindPopup(popup_ee02d70b54bd4ad9922c8f49ae38d19f)
+        ;
+
+        
+    
+    
+            var marker_04f2a5015c55495d931b82d0ced764bf = L.marker(
+                [37.523884659598295, 127.054264116487],
+                {"color": "red", "radius": 10}
+            ).addTo(map_dbc8cb6611ba4f7e82c2deee053164fc);
+        
+    
+        var popup_41df002f49ef47c18103f123c02479ab = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f07710a5f6034c7ab6a957c68ea005c5 = $(`<div id="html_f07710a5f6034c7ab6a957c68ea005c5" style="width: 100.0%; height: 100.0%;">호텔 리베라</div>`)[0];
+            popup_41df002f49ef47c18103f123c02479ab.setContent(html_f07710a5f6034c7ab6a957c68ea005c5);
+        
+
+        marker_04f2a5015c55495d931b82d0ced764bf.bindPopup(popup_41df002f49ef47c18103f123c02479ab)
+        ;
+
+        
+    
+</script>

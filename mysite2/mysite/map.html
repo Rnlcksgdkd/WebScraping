@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4e033881684d4cea8a1682c57cd6cff2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_4e033881684d4cea8a1682c57cd6cff2" ></div>
+        
+</body>
+<script>    
+    
+            var map_4e033881684d4cea8a1682c57cd6cff2 = L.map(
+                "map_4e033881684d4cea8a1682c57cd6cff2",
+                {
+                    center: [37.537305024999995, 126.966830175],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_306e89dc09ab4689a4158785fbb5d126 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_4e033881684d4cea8a1682c57cd6cff2);
+        
+    
+            var marker_97e9db3264094e33b8c24ba0ac8eb186 = L.marker(
+                [37.5544309, 126.97468590000001],
+                {"color": "red", "radius": 10}
+            ).addTo(map_4e033881684d4cea8a1682c57cd6cff2);
+        
+    
+        var popup_9f196fe1d22b49cc853f4df0cae303a2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e25e737cbf0b4732a04927ea39e89297 = $(`<div id="html_e25e737cbf0b4732a04927ea39e89297" style="width: 100.0%; height: 100.0%;">서울역 원미닛 게스트하우스</div>`)[0];
+            popup_9f196fe1d22b49cc853f4df0cae303a2.setContent(html_e25e737cbf0b4732a04927ea39e89297);
+        
+
+        marker_97e9db3264094e33b8c24ba0ac8eb186.bindPopup(popup_9f196fe1d22b49cc853f4df0cae303a2)
+        ;
+
+        
+    
+    
+            var marker_4292871c5dc84a4aad14dd8f18e473c0 = L.marker(
+                [37.5315964, 126.9642116],
+                {"color": "red", "radius": 10}
+            ).addTo(map_4e033881684d4cea8a1682c57cd6cff2);
+        
+    
+        var popup_6336cd896a0e4ec1a4ec75ce38a1899b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9c532a71654e4c1a9b5b3e7890dac72c = $(`<div id="html_9c532a71654e4c1a9b5b3e7890dac72c" style="width: 100.0%; height: 100.0%;">이비스 스타일 앰배서더 서울 용산</div>`)[0];
+            popup_6336cd896a0e4ec1a4ec75ce38a1899b.setContent(html_9c532a71654e4c1a9b5b3e7890dac72c);
+        
+
+        marker_4292871c5dc84a4aad14dd8f18e473c0.bindPopup(popup_6336cd896a0e4ec1a4ec75ce38a1899b)
+        ;
+
+        
+    
+    
+            var marker_8ba74799def844f6b4f81d4bbdc0d287 = L.marker(
+                [37.5315964, 126.9642116],
+                {"color": "red", "radius": 10}
+            ).addTo(map_4e033881684d4cea8a1682c57cd6cff2);
+        
+    
+        var popup_d62e8afa3de34630b4422811b1c5af92 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2a97c590ddc747468d065b9eb762041c = $(`<div id="html_2a97c590ddc747468d065b9eb762041c" style="width: 100.0%; height: 100.0%;">노보텔 스위트 앰배서더 서울 용산</div>`)[0];
+            popup_d62e8afa3de34630b4422811b1c5af92.setContent(html_2a97c590ddc747468d065b9eb762041c);
+        
+
+        marker_8ba74799def844f6b4f81d4bbdc0d287.bindPopup(popup_d62e8afa3de34630b4422811b1c5af92)
+        ;
+
+        
+    
+    
+            var marker_b059411112a2488c80732df18e1730de = L.marker(
+                [37.5315964, 126.9642116],
+                {"color": "red", "radius": 10}
+            ).addTo(map_4e033881684d4cea8a1682c57cd6cff2);
+        
+    
+        var popup_428988f250194153929c1f92f4f1fbd4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7520ffa60f6a4782ac4af7a9f335cabb = $(`<div id="html_7520ffa60f6a4782ac4af7a9f335cabb" style="width: 100.0%; height: 100.0%;">노보텔 앰배서더 서울 용산</div>`)[0];
+            popup_428988f250194153929c1f92f4f1fbd4.setContent(html_7520ffa60f6a4782ac4af7a9f335cabb);
+        
+
+        marker_b059411112a2488c80732df18e1730de.bindPopup(popup_428988f250194153929c1f92f4f1fbd4)
+        ;
+
+        
+    
+</script>

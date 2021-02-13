@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang = en>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      div[class^="col"] { padding: 2px; border: 0px solid #dadada; background-color: #FAFAFA; }
+      
+    </style>
+
+
+    <title>  {% block title %} Airbnb Clone Site Team3{% endblock %} </title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed; z-index:2;  width: 100%; height : 10%; " > 
+
+        <a class="navbar-brand" href="{% url 'polls:base' %}" style="font-size: 200%; margin-right: 20px;"> <strong> Airbnb </strong></a> 
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent"> <ul class="navbar-nav mr-auto">
+          <li class="nav-item active"> <a class="nav-link" href= "{% url 'polls:base' %}" style = "margin-right: 15px;">홈 <span class="sr-only">(current)</span></a> </li> 
+          <li class="nav-item"> <a class="nav-link" href="#"  style = "margin-right: 20px;">게시판</a> </li> <li class="nav-item dropdown">
+          
+              <form class="form-inline my-2 my-lg-0" action="{% url 'polls:Info_searching'%}?search_keyword={{search_keyword}}" method="get">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="text" name = "search_keyword" placeholder="Search" aria-label="Search"> 
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> 
+              </form> </ul>
+              </div> </nav>
+
+
+              <br>
+              <br>
+              <br>
+              <br>
+
+  
+
+
+
+   
+
+
+    <div id = content >
+        {% block content  %}
+        <img src = "https://cdn.pixabay.com/photo/2019/12/02/14/46/paragliding-4667879_960_720.jpg">
+        {% endblock %}
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+
+</body>
+
+</html>

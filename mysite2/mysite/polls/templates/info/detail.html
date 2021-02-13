@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+
+{% block sidebar %}
+<div id = "content_left" style = "border: 1px 
+    solid blue; padding: 10px;  float: left; width: 80%" >
+    사이드바 예시    
+</div>
+{% endblock%}
+
+{% block content %}
+<div id = "content_left" style = "border: 1px solid blue; padding: 10px;  float: left; width: 47%" >
+    
+    {{acmd}}
+
+    <br>
+
+    {{acmd.location}}
+    <br>
+    {{acmd.limk}}
+    <br>
+    <img src= {{acmd.image_link}} alt="Image">
+
+ {% endblock %}
+
+
