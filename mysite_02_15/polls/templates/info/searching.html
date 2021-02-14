@@ -1,0 +1,109 @@
+
+{% extends "base.html" %}
+
+{% block sidebar %}
+<div id = "content_left" style = "border: 1px 
+    solid blue; padding: 10px;  float: left; width: 80%" >
+    사이드바 예시    
+</div>
+{% endblock%}
+
+{% block content %}
+
+    
+    <div class="container-fluid" style="z-index:1"> 
+
+       
+        <div class="row"> 
+
+    {% for acmd in search_result %}
+     
+    <div class="col-2"> 
+        <div class="card" style = "border-width: 1px; border-color:rgb(60, 104, 185);"> 
+          <img src= {{acmd.image_link}} class="card-img-top"
+               alt="..."> <div class="card-body"> 
+          
+          <h5 class ="card-title" style = "color: rgb(9, 0, 10);"> <strong> {{acmd.room_name}} <span class="badge bg-warning">{{acmd.rating}}</span></strong> </h5>
+
+           <p class="card-text" style="font-size: 90%">{{acmd.location}}</p>  
+
+           
+            {% if acmd.owner_comment|length == 0 %}
+            <details style="font-size: 80%; float:left">
+                <summary style = "float:left;"> 
+                    설명이 없습니다.
+                     </summary>
+    
+                </details>           
+            {% else %}
+            <details style="font-size: 80%; float:left">
+            <summary style = "float:left;"> 
+                {{acmd.owner_comment|slice:":60"}}
+                 </summary>
+            
+                 {{acmd.owner_comment|slice:"60:"}}
+            </details>
+            {% endif %}
+            
+          <br>
+        <br>
+          <a href= "detail/{{acmd.id}}" class="btn btn-primary" style = "margin-top:10px; margin-left: 5px;">Go Detail!</a> &nbsp
+          
+          {% if acmd.min_price != None  %}
+          <a href="#" class="btn btn-outline-info" style = "margin-top: 10px;"> {{acmd.min_price}} ~ </a>
+          {% else %}
+          &nbsp  
+          <a href="#" class="btn btn-secondary" style = "margin-top: 10px;">
+            매진 </a>
+          {% endif %}
+          </div> </div> </div>
+
+    {% if forloop.counter|divisibleby:3  %}
+        <div class = "col-5">
+            
+        </div>
+    {% endif %}
+    {% endfor %}
+
+
+    <iframe src="map" title="내용" width="49.55%" height="750px" style="position: fixed;  top:100px;  right:5px; z-index: 2;"></iframe>
+    
+</div>    
+</div>
+
+
+    {% if search_result|length  == 0 %}
+        <div class=container style = "font-size: 170%; float:left; margin-left:300px; color: black;">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            이용가능한 시설이 없습니다
+        </div>
+    {% endif %}
+
+
+<!-- Paging -->
+<div class=container style="align-content: center; margin-top:50px;">
+<nav aria-label= "Page Navigaton" style = "width:150%;">
+    <ul class = "pagination">
+        {% for page in page_range %}
+        <li class = "page-item"><a class ="page-link" 
+            href = "{% url 'polls:Info_searching'%}?search_keyword={{search_keyword}}&&page={{page}}">{{page}}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+</div>
+
+
+
+
+
+
+{% endblock%}
+
+
+
+
